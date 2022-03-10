@@ -1,43 +1,32 @@
 import React from 'react';
 import './App.css';
+import ButtonsOnePart from "./ButtonsOnePart";
+import Button from "./Components/Button";
 
 function App() {
 
-    /*const myFirstSubscriber = (event:MouseEvent<HTMLButtonElement>) => {
-        console.log("Hi, I'm Vasya")
+    const Button1Foo = (subscriber: string, age: number, address: string) => {
+        console.log(subscriber, age, address)
     }
-    const mySecondSubscriber = (event:MouseEvent<HTMLButtonElement>) => {
-        console.log("Hi, I'm Dina")
-    }*/
-    /*const onClickHandler = (name: string) => {
-        console.log(name)
-    }*/
+    const Button2Foo = (subscriber: string,  age: number, address: string) => {
+        console.log(subscriber, age, address)
+    }
+    const Button3Foo = () => {
+        console.log("I'm stupid button")
+    };
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    const foo1 = () => {
-        //Ничего не передавать, но в консоли должно показаться 100200
-        console.log(100200)
-    }
-    const foo2 = (takeNumber: number) => {
-        //Передать цифру - 100200
-        console.log(takeNumber)
-    }
     return (
         <div className="App">
-            {/*Microtask button lesson*/}
-            {/*<button onClick={() => onClickHandler('Vasya')}>MyYouTubeChannel-1
-            </button>
-            <button onClick={() => onClickHandler('Dina')}>MyYouTubeChannel-2
-            </button>
-            <button onClick={() => onClickHandler('some info')}>MyYouTubeChannel-3
-            </button>*/}
-
-            {/*//////////////////////////////////////////////////////////////////////////////////////////////*/}
-
-            {/*Microtask button homework*/}
-            <button onClick={foo1}>1</button>
-            <button onClick={()=>foo2(100200)}>2</button>
+            <p>1 part</p>
+            <div>
+                <ButtonsOnePart/>
+            </div>
+            <p>2 part - Universal Button</p>
+            <div>
+                <Button name={'MyYouTubeChannel-1'} callBack={() => Button1Foo('I\'m Vasya', 21, 'Lenina 122')}/>
+                <Button name={'MyYouTubeChannel-2'} callBack={() => Button2Foo('I\'m Ivan', 27, 'Kalinina 122')}/>
+                <Button name={'Button-3'} callBack={Button3Foo}/>
+            </div>
         </div>
     );
 }
